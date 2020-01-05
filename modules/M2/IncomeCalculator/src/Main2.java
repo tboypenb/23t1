@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
-public class Main2 { private static int minIncome = 200000; // минимальный доход
+public class Main2 {
+    private static int minIncome = 200000; // минимальный доход
     private static int maxIncome = 900000; // максимальный доход
 
     private static int officeRentCharge = 140000; // аренда
@@ -15,28 +16,22 @@ public class Main2 { private static int minIncome = 200000; // минималь�
 
     private static double minInvestmentsAmount = 100000; // минимальная сумма инвестиций
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         // расчет минимальной суммы дохода для инвестирования
         boolean cash = false;
-        for(int i=200000; i < 900000; i++)
-        {
-            if(((i - i * managerPercent - calculateFixedCharges()) - ((i - i * managerPercent - calculateFixedCharges()) * mainTaxPercent)) >= 100000)
-            {
+        for (int i = 200000; i < 900000; i++) {
+            if (((i - i * managerPercent - calculateFixedCharges()) - ((i - i * managerPercent - calculateFixedCharges()) * mainTaxPercent)) >= 100000) {
                 cash = true;
                 System.out.println("Минимальная сумма дохода для получения инвестиций = " + i);
                 break;
             }
         }
-
-
-        while(true)
-        {
+        while (true) {
             System.out.println("Введите сумму доходов компании за месяц " +
                     "(от 200 до 900 тысяч рублей): ");
             int income = (new Scanner(System.in)).nextInt(); // считывание числа из терминала
 
-            if(!checkIncomeRange(income)) {   // проверка на то что доход вписан в границы от 200 тыс до 900 тыс
+            if (!checkIncomeRange(income)) {   // проверка на то что доход вписан в границы от 200 тыс до 900 тыс
                 continue;
             }
 
@@ -54,7 +49,7 @@ public class Main2 { private static int minIncome = 200000; // минималь�
                     (taxAmount > 0 ? taxAmount : 0)); // информация по сумме налогов
             System.out.println("Компания может инвестировать: " +
                     (canMakeInvestments ? "да" : "нет")); // вывод информации о возможности инвестиций
-            if(pureIncome < 0) {
+            if (pureIncome < 0) {
                 System.out.println("Бюджет в минусе! Нужно срочно зарабатывать!"); // выводится сообщение если доход отрицательный
             }
         }
@@ -62,12 +57,12 @@ public class Main2 { private static int minIncome = 200000; // минималь�
 
     private static boolean checkIncomeRange(int income) //метод который проверяет правильность введенного дохода
     {
-        if(income < minIncome) // проверка нижней границы
+        if (income < minIncome) // проверка нижней границы
         {
             System.out.println("Доход меньше нижней границы");
             return false;
         }
-        if(income > maxIncome) // проверка вверхней границы
+        if (income > maxIncome) // проверка вверхней границы
         {
             System.out.println("Доход выше верхней границы");
             return false;
