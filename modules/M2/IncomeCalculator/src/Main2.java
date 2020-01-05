@@ -1,8 +1,6 @@
 import java.util.Scanner;
 
-public class Main
-{
-    private static int minIncome = 200000; // минимальный доход
+public class Main2 { private static int minIncome = 200000; // минимальный доход
     private static int maxIncome = 900000; // максимальный доход
 
     private static int officeRentCharge = 140000; // аренда
@@ -20,13 +18,22 @@ public class Main
     public static void main(String[] args)
     {
         // расчет минимальной суммы дохода для инвестирования
-        double minPureIncome = 100000 + taxAmount;
-        System.out.println("минимальная сумма дохода" + minPureIncome);
+        boolean cash = false;
+        for(int i=200000; i < 900000; i++)
+        {
+            if((i - officeRentCharge - telephonyCharge - internetAccessCharge - assistantSalary - financeManagerSalary) >= 10000)
+            {
+                cash = true;
+                System.out.println("Минимальная сумма дохода для получения инвестиций = " + i);
+                break;
+            }
+        }
+
 
         while(true)
         {
             System.out.println("Введите сумму доходов компании за месяц " +
-                "(от 200 до 900 тысяч рублей): ");
+                    "(от 200 до 900 тысяч рублей): ");
             int income = (new Scanner(System.in)).nextInt(); // считывание числа из терминала
 
             if(!checkIncomeRange(income)) {   // проверка на то что доход вписан в границы от 200 тыс до 900 тыс
@@ -35,18 +42,18 @@ public class Main
 
             double managerSalary = income * managerPercent; //подсчет зарплаты менеджера
             double pureIncome = income - managerSalary -
-                calculateFixedCharges();  // подсчет чистого дохода
+                    calculateFixedCharges();  // подсчет чистого дохода
             double taxAmount = mainTaxPercent * pureIncome; // подсчет основного налога
             double pureIncomeAfterTax = pureIncome - taxAmount; // подсчет доход - налог
 
             boolean canMakeInvestments = pureIncomeAfterTax >=
-                minInvestmentsAmount; // при таком условии можно делать инвестиции
+                    minInvestmentsAmount; // при таком условии можно делать инвестиции
 
             System.out.println("Зарплата менеджера: " + managerSalary); // вывод информации по зп менеджера
             System.out.println("Общая сумма налогов: " +
-                (taxAmount > 0 ? taxAmount : 0)); // информация по сумме налогов
+                    (taxAmount > 0 ? taxAmount : 0)); // информация по сумме налогов
             System.out.println("Компания может инвестировать: " +
-                (canMakeInvestments ? "да" : "нет")); // вывод информации о возможности инвестиций
+                    (canMakeInvestments ? "да" : "нет")); // вывод информации о возможности инвестиций
             if(pureIncome < 0) {
                 System.out.println("Бюджет в минусе! Нужно срочно зарабатывать!"); // выводится сообщение если доход отрицательный
             }
@@ -68,7 +75,7 @@ public class Main
         return true;
     }
 
-    private static int calculateFixedCharges() //метод рассчитывания доходов
+    private static int calculateFixedCharges() //метод рассчитывания расходов
     {
         return officeRentCharge +
                 telephonyCharge +
