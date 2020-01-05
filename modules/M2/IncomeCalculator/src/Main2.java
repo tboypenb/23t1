@@ -21,7 +21,7 @@ public class Main2 { private static int minIncome = 200000; // минималь�
         boolean cash = false;
         for(int i=200000; i < 900000; i++)
         {
-            if((i - officeRentCharge - telephonyCharge - internetAccessCharge - assistantSalary - financeManagerSalary) >= 10000)
+            if(((i - i * managerPercent - calculateFixedCharges()) - ((i - i * managerPercent - calculateFixedCharges()) * mainTaxPercent)) >= 100000)
             {
                 cash = true;
                 System.out.println("Минимальная сумма дохода для получения инвестиций = " + i);
