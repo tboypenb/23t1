@@ -18,14 +18,9 @@ public class Main2 {
 
     public static void main(String[] args) {
         // расчет минимальной суммы дохода для инвестирования
-        boolean cash = false;
-        for (int i = 200000; i < 900000; i++) {
-            if (((i - i * managerPercent - calculateFixedCharges()) - ((i - i * managerPercent - calculateFixedCharges()) * mainTaxPercent)) >= 100000) {
-                cash = true;
-                System.out.println("Минимальная сумма дохода для получения инвестиций = " + i);
-                break;
-            }
-        }
+        double minIncomeForInvestments = (minInvestmentsAmount / (1 - mainTaxPercent) + calculateFixedCharges())
+                / (1 - managerPercent);
+
         while (true) {
             System.out.println("Введите сумму доходов компании за месяц " +
                     "(от 200 до 900 тысяч рублей): ");
