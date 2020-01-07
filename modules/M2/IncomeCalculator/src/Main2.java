@@ -20,7 +20,7 @@ public class Main2 {
         // расчет минимальной суммы дохода для инвестирования
         double minIncomeForInvestments = (minInvestmentsAmount / (1 - mainTaxPercent) + calculateFixedCharges())
                 / (1 - managerPercent);
-
+        System.out.println(minIncomeForInvestments);
         while (true) {
             System.out.println("Введите сумму доходов компании за месяц " +
                     "(от 200 до 900 тысяч рублей): ");
