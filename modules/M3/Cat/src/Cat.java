@@ -85,4 +85,40 @@ public class Cat
             return "Playing";
         }
     }
+
+    public void setColorWhite(colorCat colorWhite)
+    {
+    }
+
+    public colorCat getColorWhite()
+    {
+        return colorCat.WHITE;
+    }
+
+    public void setColorGreey(colorCat colorGreey)
+    {
+    }
+
+    public colorCat getColorGreey()
+    {
+        return colorCat.GREEY;
+    }
+
+    public void setColorBlack(colorCat colorBlack)
+    {
+    }
+
+    public colorCat getColorBlack()
+    {
+        return colorCat.BLACK;
+    }
+
+    public void setColorRedHead(colorCat colorRedHead)
+    {
+    }
+
+    public colorCat getColorRedHead()
+    {
+        return colorCat.REDHEAD;
+    }
 }
