@@ -1,8 +1,15 @@
 
+
 public class Cat
 {
+    public static final int ESEY_COUNTS = 2;
+    public static final int maxweight = 9000;
+    public static final int minweight = 1000;
+
     private double originWeight;
     private double weight;
+    private double weightFeed;
+    private static int count;
 
     private double minWeight;
     private double maxWeight;
@@ -13,17 +20,41 @@ public class Cat
         originWeight = weight;
         minWeight = 1000.0;
         maxWeight = 9000.0;
+        count ++;
 
+    }
+
+    public Cat(int weight)
+    {
+        this();
+        this.weight = weight;
+    }
+
+    public static int getCount()
+    {
+        return count;
+    }
+
+    public void restroom()
+    {
+        weight = weight - 10;
+        System.out.println("weight decreased");
+    }
+
+    public double feedReturn()
+    {
+        return weightFeed;
     }
 
     public void meow()
     {
-        weight = weight - 1;
+        weight = weight - 100;
         System.out.println("Meow");
     }
 
     public void feed(Double amount)
     {
+        weightFeed += amount;
         weight = weight + amount;
     }
 
@@ -40,9 +71,11 @@ public class Cat
     public String getStatus()
     {
         if(weight < minWeight) {
+            count --;
             return "Dead";
         }
         else if(weight > maxWeight) {
+            count--;
             return "Exploded";
         }
         else if(weight > originWeight) {
